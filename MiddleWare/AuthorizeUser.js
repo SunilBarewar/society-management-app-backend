@@ -13,7 +13,7 @@ const verifyJWTtoken = async (req, res, next) => {
         });
     }
     else {
-        res.status(401).json({ message: "please add token with header" })
+        res.status(401).json({message: "please add token with header"})
     }
 }
 

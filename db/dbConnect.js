@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+mongoose.set('strictQuery', true);
  const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.DB_URL, {
@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
       useUnifiedTopology: true,
     });
 
-    console.log(`MongoDB Connected successfully: ${conn.connection.host}`);
+    console.log(`MongoDB Connected successfully`);
   } catch (error) {
     console.log(`Error: ${error.message}`);
     process.exit();

@@ -16,6 +16,5 @@ connectDB();
 
 
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
-// app.use(verifyJWTtoken);
 app.use('/api/auth', authRoute)
 

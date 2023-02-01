@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const UserModel = require('../models/User.js')
+const UserModel = require('../models/UserModel.js')
 const jwt = require('jsonwebtoken')
 
 // register new User
@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
             const token = await jwt.sign({ user }, process.env.JWT_KEY)
             const validity = await bcrypt.compare(password, user.password);
 
-            validity ? res.status(200).json({ isUser: true, token: token }) : res.status(400).json({ message: "Wrong Password", isUser: false })
+            validity ? res.status(200).json({  user , token }) : res.status(400).json({ message: "Wrong Password", user })
 
         } else {
             res.status(400).json({ message: "user does not exist", isUser: false });
@@ -51,8 +51,21 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: error.message, isUser: false })
     }
 }
-
+const deleteUser = async (req, res) => {
+    const id = req.params.id;
+    try {
+        if(id){
+            await UserModel.deleteOne({_id : id});
+            res.status(200).json({ message: "user deleted successfully" }) 
+        }else{
+            res.status(400).json({ message : "please provide user _id" })
+        }
+    } catch (error) {
+        res.status(400).json({ message : error.message })
+    }
+}
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    deleteUser
 }

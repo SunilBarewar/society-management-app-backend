@@ -1,9 +1,11 @@
 const mongoose = require("mongoose")
-
+const {candidateSchema} = require("./Candidate.js")
 
 const vote_pollSchema = new mongoose.Schema({
-    isActive: { type: Boolean, required: true },
-    candidates: [{ type: Schema.Types.ObjectId, ref: "Candidate" }]
+    title: {type : String,required : true},
+    startTime : {type : Date,required : true},
+    endTime : {type : Date , required : true},
+    candidates: [candidateSchema]
 }, {
     timestamps: true
 })

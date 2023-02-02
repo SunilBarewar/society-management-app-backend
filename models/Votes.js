@@ -2,10 +2,11 @@ const mongoose = require("mongoose")
 
 
 const votesSchema = new mongoose.Schema({
-    user_id : {type : String,required : true},
+    member_id : {type : String,required : true},
     poll_id : {type : String,required : true},
     candidate_id :  {type : String , required : true}
-}, {
+},
+{
     timestamps: true
 })
 

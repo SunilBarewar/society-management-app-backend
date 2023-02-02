@@ -5,7 +5,10 @@ const { connectDB } = require('./db/dbConnect.js')
 const verifyJWTtoken = require('./MiddleWare/AuthorizeUser.js')
 const bodyParser = require('body-parser')
 const app = express();
+
+
 const authRoute = require("./routes/AuthRoutes.js")
+const votingRoute = require("./routes/VotingRoutes.js")
 app.use(cors());
 dotenv.config();
 
@@ -17,4 +20,4 @@ connectDB();
 
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
 app.use('/api/auth', authRoute)
-
+app.use('/api/voting',votingRoute)

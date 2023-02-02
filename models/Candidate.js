@@ -2,13 +2,13 @@ const mongoose = require("mongoose")
 
 
 const candidateSchema = new mongoose.Schema({
-    name : {type: String, required : true},
-    post : {type: String , required : true},
-}, {
-    timestamps: true
-})
+    _id: {
+        type: mongoose.Types.ObjectId,
+        default: mongoose.Types.ObjectId
+    },
+    name: {type : String, required : true},
+    post: {type : String, required : true},
+    votes: {type : Number , default : 0}
+});
 
-
-const candidateModel = mongoose.model("Candidate", candidateSchema)
-
-
+module.exports = {candidateSchema}

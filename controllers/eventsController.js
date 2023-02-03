@@ -31,6 +31,7 @@ const removeEvent = async(req,res) =>{
 
     try {
         await eventModel.findByIdAndDelete({_id : eventId})
+        res.status(200).json({message : "event romoved successfully"});
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
@@ -39,6 +40,6 @@ const removeEvent = async(req,res) =>{
 module.exports = {
     addEvent,
     cancelEvent,
-    removeEvent,
+    removeEvent
     
 }

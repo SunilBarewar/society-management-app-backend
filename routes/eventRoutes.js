@@ -1,4 +1,4 @@
-const { addEvent, cancelEvent, removeEvent } = require('../controllers/eventsController');
+const { addEvent, cancelEvent, removeEvent } = require('../controllers/eventsController.js');
 
 const router = require('express').Router();
 

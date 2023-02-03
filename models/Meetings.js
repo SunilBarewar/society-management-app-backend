@@ -6,3 +6,7 @@ const meetingsSchema = new mongoose.Schema({
     date : {type : Date, required : true},
     time : {type : String, required : true}
 })
+
+
+const meetingModel = mongoose.model('meetings', meetingsSchema)
+module.exports = meetingModel
